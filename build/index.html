@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>index</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        #map-demo{
+            height: 100%;
+            position: relative;
+        }
+        #container{
+            bottom: 0;
+            height: 100%;
+            left: 342px;
+            position: absolute;
+            right: 0;
+        }
+        #options-box{
+            background: #fff;
+            border: 1px solid #999;
+            border-radius: 3px;
+            height: 100%;
+            line-height: 35px;
+            padding: 10px 10px 30px 10px;
+            text-align: left;
+            width: 320px;
+        }
+        #place-select{
+
+        }
+    </style>
+</head>
+<body>
+<div id="map-demo">
+    <div id="options-box">
+        <h1>This is my city</h1>
+        <hr>
+        <div>
+            <label for="search">Search</label>
+            <input id="search" type="text" data-bind="value: userSearch" placeholder="Please input the location you interest in"><!-- data-bind="textInput: userSearch"-->
+            <button id="search-button" data-bind="click: display">Go</button>
+            <p>Key Locations</p>
+            <ul id="fault-place" data-bind="foreach: locationList">
+                <li data-bind="text: title"></li>
+            </ul>
+        </div>
+        <div></div>
+
+
+    </div>
+    <div id="container"></div>
+</div>
+
+<script>
+
+
+</script>
+<script src="http://webapi.amap.com/maps?v=1.4.3&key=bdcccadfee676c3e64be41f9d7963c4c"></script>
+
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>
