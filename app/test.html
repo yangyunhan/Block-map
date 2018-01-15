@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>搜索北京市的风景名胜</title>
+
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main.css"/>
+    <style type="text/css">
+        .amap-info-content,h3{
+            font-family: Microsoft Yahei;
+            font-size:12px;
+            min-width: 200px;
+            max-width: 250px;
+        }
+        .amap-info-content{
+            padding-right: 10px;
+        }
+        h3{
+            margin: 0;
+            font-size:13px;
+        }
+    </style>
+
+
+</head>
+<body>
+<div id="mapContainer"></div>
+
+<script type="text/javascript">
+    var map = new AMap.Map("mapContainer", {
+        resizeEnable: true
+    });
+    var marker = new Array();
+    var windowsArr = new Array();
+    //基本地图加载
+    function placeSearch() {
+        var placeSearch;
+        AMap.service(["AMap.PlaceSearch"], function() {
+            placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+                type:'风景名胜',
+                city: "010" //城市
+            });
+            //关键字查询
+            placeSearch.search('修道堂', function(status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                    keywordSearch_CallBack(result);
+                    console.log(result);
+                }
+            });
+        });
+    }
+
+    placeSearch();
+    //添加marker&infowindow
+    function addmarker(i, d) {
+        var lngX = d.location.getLng();
+        var latY = d.location.getLat();
+        var markerOption = {
+            map: map,
+            icon:"https://webapi.amap.com/theme/v1.3/markers/n/mark_b"+(i+1)+".png",
+            position: [lngX, latY],
+            topWhenMouseOver: true
+
+        };
+        var mar = new AMap.Marker(markerOption);
+        marker.push([lngX, latY]);
+
+        var infoWindow = new AMap.InfoWindow({
+            content: "<h3><font color=\"#00a6ac\">  " + (i + 1) + ". " + d.name + "</font></h3>" + createContent(d.type, d.address, d.tel),
+            autoMove: true,
+            offset: new AMap.Pixel(0, -30)
+        });
+        windowsArr.push(infoWindow);
+        var aa = function(e) {
+            infoWindow.open(map, mar.getPosition());
+        };
+        mar.on( "mouseover", aa);
+    }
+    //回调函数
+    function keywordSearch_CallBack(data) {
+        var resultStr = "";
+        var imgSrc = "";
+        var poiArr = data.poiList.pois;
+        var resultCount = poiArr.length;
+        for (var i = 0; i < resultCount; i++) {
+            imgSrc = "http://api.flickr.com/services?&method=&api_key=264125a5cd570b52b80d6e6f6983b4a8&callback=imgUrl";
+            resultStr += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById1(" + i + ",this)' onmouseout='onmouseout_MarkerStyle(" + (i + 1) + ",this)' style=\"font-size: 12px;cursor:pointer;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\"><table><tr><td><img src=\"https://webapi.amap.com/images/" + (i + 1) + ".png\"></td>" + "<td><h3><font color=\"#00a6ac\">名称: " + poiArr[i].name + "</font></h3>";
+            resultStr += createContent(poiArr[i].type, poiArr[i].address, poiArr[i].tel) + "</td></tr></table></div>";
+            addmarker(i, poiArr[i]);
+        }
+        map.setFitView();
+    }
+
+    function imgUrl(data){
+        console.log(data.url);
+    }
+
+    function parseStr(p){
+        if(!p || p === "undefined" || p === " undefined"||p==="tel"){
+            p="暂无";
+        }
+        return p;
+    }
+    function createContent(type, address, tel) {  //窗体内容
+        type=parseStr(type);
+        address=parseStr(address);
+        tel=parseStr(tel);
+        var s=[];
+        s.push("地址：" +address);
+        s.push("电话：" +tel);
+        s.push("类型：" +type);
+
+        return '<div>'+s.join("<br>")+'</div>';
+    }
+
+    function openMarkerTipById1(pointid, thiss) {  //根据id 打开搜索结果点tip
+        thiss.style.background = '#CAE1FF';
+        windowsArr[pointid].open(map, marker[pointid]);
+    }
+    function onmouseout_MarkerStyle(pointid, thiss) { //鼠标移开后点样式恢复
+        thiss.style.background = "";
+    }
+</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.2&key=bdcccadfee676c3e64be41f9d7963c4c"></script>
+<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
+
+
+</body>
+</html>

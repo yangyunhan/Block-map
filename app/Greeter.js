@@ -1,5 +1,4 @@
 //Greeter.js
-//var style = require('./Greeter.css');
 //var config = require('./config.json');
 
 module.exports = function () {

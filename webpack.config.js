@@ -73,7 +73,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             ko: 'knockout',
-            $: 'jquery'
+            $: 'jquery',
+            axios: 'axios'
         })
     ]
 };
