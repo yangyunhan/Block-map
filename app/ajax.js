@@ -29,6 +29,7 @@ module.exports = function (place) {
         let url = 'https://farm' + farm + '.staticflickr.com/' + server +
             '/' + id + '_' + secret + '_m.jpg';
         console.log(url);
+        
         return url;
     }
     getPhotosFromFlickr();

@@ -32,6 +32,17 @@ module.exports = function () {
         self.goToId = function (id) {
             self.chosenId(id);
         };*/
+        self.inputFilter = ko.computed(function () {
+            let filter = self.userSearch();
+            if(!filter){
+                return self.locationList()
+            } else {
+                return ko.utils.arrayFilter(self.locationList(), function (item) {
+                    return ko.utils.stringStartsWith(item.title, filter);
+                })
+            }
+        });
+        /*
         self.liDisplay = ko.computed({
             read: self.locationList,
             write: function () {
@@ -51,7 +62,7 @@ module.exports = function () {
                 }
             },
             owner: this
-        });
+        });*/
     }
 
     let model = new ViewModel();

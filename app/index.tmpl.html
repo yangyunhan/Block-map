@@ -93,12 +93,16 @@
         <hr>
         <div>
             <label for="search">Search</label>
-            <input id="search" type="text" data-bind="value: userSearch" placeholder="Please input the location you interest in"><!-- data-bind="textInput: userSearch"-->
-            <button id="search-button" data-bind="click: liDisplay">Go</button>
+            <input id="search" type="text"
+                   data-bind="textInput: userSearch"
+                   placeholder="Please input the location you interest in">
+            <!-- data-bind="value: userSearch"/data-bind="textInput: userSearch"/data-bind="value: inputFilter(), valueUpdate: 'afterkeydown'-->
+            <!--<button id="search-button" data-bind="click: liDisplay">Go</button>-->
             <p>Key Locations</p>
-            <ul id="fault-place" data-bind="foreach: locationList">
-                <li data-bind="text: title, visible: display, click: $root.goToId, css: {selected: $data === $root.chosenId}"></li>
+            <ul id="fault-place" data-bind="foreach: inputFilter(), valueUpdate: 'afterkeydown'">
+                <li data-bind="text: title"></li><!--, visible: display, click: $root.goToId, css: {selected: $data === $root.chosenId}-->
             </ul>
+            <!--data-bind="foreach: locationList"-->
         </div>
         <div></div>
 
