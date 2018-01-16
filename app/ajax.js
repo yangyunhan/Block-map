@@ -31,5 +31,5 @@ module.exports = function (place) {
         console.log(url);
         return url;
     }
-    console.log(getPhotosFromFlickr());
+    getPhotosFromFlickr();
 };
