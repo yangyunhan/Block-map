@@ -1,4 +1,5 @@
 //map.js
+
 var ajax = require('././ajax.js');
 ajax('武汉长江大桥');
 module.exports = function () {
@@ -155,6 +156,7 @@ module.exports = function () {
     function infoWindowContent(title, address, tel, type) {
         let content = [];
         let url = ajax(title);
+        console.log(url);
         content.push("<img src='"+url+"'>地址" + address);
         content.push("电话：" + tel);
         content.push("类型：" + type);

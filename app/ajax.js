@@ -1,7 +1,7 @@
 //ajax.js
-
 module.exports = function (place) {
-    function getPhotosFromFlickr () {
+    function getPhotosFromFlickr(jf) {
+        let imgUrl = '';
         const url = 'https://api.flickr.com/services/rest/';
         const key = '264125a5cd570b52b80d6e6f6983b4a8';
         const params = $.param({
@@ -11,12 +11,11 @@ module.exports = function (place) {
             format: 'json'
         });
         const endpoint = `${url}?${params}`;
-        //window.open(endpoint);
-        axios.get(endpoint).then(data => {
-            return jsonp(data)
-        }).catch(error => {
-            console.log(error);
-        })
+        axios.get(endpoint).then(function(data){
+            imgUrl = jf(data);
+            console.log(imgUrl);
+            return imgUrl
+        }).catch(error => {console.log(error);});
     }
     function jsonp(data) {
         const photos = data.data.substring(14,data.data.length-1);
@@ -26,11 +25,8 @@ module.exports = function (place) {
         let id = infoPho.id;
         let secret = infoPho.secret;
         let server = infoPho.server;
-        let url = 'https://farm' + farm + '.staticflickr.com/' + server +
+        return 'https://farm' + farm + '.staticflickr.com/' + server +
             '/' + id + '_' + secret + '_m.jpg';
-        console.log(url);
-        
-        return url;
     }
-    getPhotosFromFlickr();
+    return getPhotosFromFlickr(jsonp);
 };
