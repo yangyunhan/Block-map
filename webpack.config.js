@@ -3,17 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',
-    entry: __dirname + "/app/main.js", //已多次提及的唯一入口文件
+    entry: __dirname + "/src/main.js", //已多次提及的唯一入口文件
     /*
     *   main: __dirname + "/app/main.js",
         knockout: __dirname + "/app/knockout-3.2.0.js"
     * */
     output: {
-        path: __dirname + "/build", //打包后的文件存放的地方
+        path: __dirname + "/dist", //打包后的文件存放的地方
         filename: "bundle.js"//打包后输出文件的文件名
     },
     devServer: {
-        contentBase: "./build",
+        contentBase: "./dist",
         historyApiFallback: true, //不跳转
         inline: true//实时刷新
     },
@@ -68,7 +68,7 @@ module.exports = {
     plugins: [
         new webpack.BannerPlugin('版权所有，翻版必究'),
         new HtmlWebpackPlugin({
-            template: __dirname + "/app/index.tmpl.html"
+            template: __dirname + "/src/index.tmpl.html"
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({

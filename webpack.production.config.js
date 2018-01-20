@@ -5,9 +5,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
-    entry: __dirname + "/app/main.js",
+    entry: __dirname + "/src/main.js",
     output: {
-        path: __dirname + "/build",
+        path: __dirname + "/dist",
         filename: "bundle-[hash].js"
     },
     devtool: "null",
@@ -34,13 +34,13 @@ module.exports = {
     plugins: [
         new webpack.BannerPlugin('版权所有，翻版必究'),
         new HtmlWebpackPlugin({
-            template: __dirname + "/app/index.tmpl.html"
+            template: __dirname + "/src/index.tmpl.html"
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin("style.css"),
 
-        new CleanWebpackPlugin('build/*.*', {
+        new CleanWebpackPlugin('dist/*.*', {
             root: __dirname,
             verbose: true,
             dry: false
