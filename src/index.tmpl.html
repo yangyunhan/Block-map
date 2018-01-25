@@ -35,6 +35,7 @@
                 padding: 10px 10px 30px 10px;
                 text-align: left;
                 width: 280px;
+                z-index: 200;
             }
             #options-box p{
                 margin: 10px 0 0 0;
@@ -130,6 +131,7 @@
                 padding: 10px 10px 30px 10px;
                 text-align: left;
                 width: 280px;
+                z-index: 200;
             }
             #options-box p{
                 margin: 10px 0 0 0;
@@ -292,6 +294,7 @@
         <div id="container"></div>
     </div>
 </div>
+
 <script>
     function toggleBar() {
         if(window.screen.width < 480){
@@ -323,6 +326,11 @@
         }
     }
 </script>
-<script src="http://webapi.amap.com/maps?v=1.4.3&key=bdcccadfee676c3e64be41f9d7963c4c"></script>
-</body>
+<script>
+    let mapError = function () {
+        //未能加载
+        alert('地图未能加载');
+    }
+</script>
+<script src="http://webapi.amap.com/maps?v=1.4.3&key=bdcccadfee676c3e64be41f9d7963c4c" onerror="mapError()"></script></body>
 </html>

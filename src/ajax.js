@@ -12,15 +12,8 @@ module.exports = function getPhotosFromFlickr (place, callback1, callback2) {
     const endpoint = `${url}?${params}`;
     axios.get(endpoint).then(data => {
         callback1(jsonp(data));
-        /*
-        const error = new Error(data.data.description);
-        error.data = data.data;
-        error.response = data;
-        console.log(error);*/
     }).catch(function(){
         callback2(noImg());
-        //console.log(typeof error);
-        //console.log(error);
     });
 
     function jsonp(data) {
