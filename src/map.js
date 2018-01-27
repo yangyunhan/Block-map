@@ -1,19 +1,83 @@
 //map.js
 import ajax from './ajax.js'
 import data from './data.js'
-//import styles from './main.css'
 
 let markers = [];
-module.exports = function () {
-    //let markers = [];
-    let defaultIcon = 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png';
-    let highlightedIcon = 'http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png';
-    let map = new AMap.Map('container', {
-        resizeEnable: true,
-        zoom:12,
-        center: [114.364322, 30.596048],
-        offset: new AMap.Pixel(0,0)
+let map = new AMap.Map('container', {
+    resizeEnable: true,
+    zoom:12,
+    center: [114.364322, 30.596048],
+    offset: new AMap.Pixel(0,0)
+});
+let defaultIcon = 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png';
+let highlightedIcon = 'http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png';
+
+
+function infoWindowContent(title, address, tel, type, position) {
+    let content = [];
+    ajax(title, function (data) {
+        content.push("<img src='"+data+"'>");
+        contentCreate(content,title,address,tel,type,position);
+    }, function (error) {
+        content.push("图片：" + error);
+        contentCreate(content,title, address,tel,type,position);
     });
+}
+
+function contentCreate(content, title, address, tel, type, position) {
+    content.push("地址" + address);
+    content.push("电话：" + tel);
+    content.push("类型：" + type);
+    let infoWindow = new AMap.InfoWindow({
+        isCustom: true,  //使用自定义窗体
+        content: createInfoWindow(title, content.join("<br/>")),
+        offset: new AMap.Pixel(16, -45)
+    });
+    infoWindow.open(map, position);
+}
+
+function createInfoWindow(title, content) {
+    let info = document.createElement("div");
+
+    //定义顶部标题
+    let top = document.createElement("div");
+
+    let titleD = document.createElement("div");
+    let closeX = document.createElement("img");
+
+    top.className = "info-top";
+    titleD.innerHTML = title;
+    closeX.src = "https://webapi.amap.com/images/close2.gif";
+    closeX.onclick = closeInfoWindow;
+
+    top.appendChild(titleD);
+    top.appendChild(closeX);
+    info.appendChild(top);
+
+    //定义中部内容
+    let middle = document.createElement("div");
+    middle.className = "info-middle";
+    middle.style.backgroundColor = 'white';
+    middle.innerHTML = content;
+    info.appendChild(middle);
+
+    //定义底部内容
+    let bottom = document.createElement("div");
+    bottom.className = "info-bottom";
+    bottom.style.position = 'relative';
+    bottom.style.top = '0';
+    bottom.style.margin = '0 auto';
+    let sharp = document.createElement("img");
+    sharp.src = "https://webapi.amap.com/images/sharp.png";
+    bottom.appendChild(sharp);
+    info.appendChild(bottom);
+    return info;
+}
+
+function closeInfoWindow() {
+    map.clearInfoWindow();
+}
+module.exports = function () {
     map.plugin(["AMap.ToolBar"], function () {
         map.addControl(new AMap.ToolBar());
     });
@@ -72,21 +136,7 @@ module.exports = function () {
         marker.setAnimation('AMAP_ANIMATION_DROP');
         marker.setMap(map);
     }
-    $(function () {
-        $.each([$('ul li')], function () {
-            $(this).click(function () {
-                let place = this.innerHTML;
-                $.each(markers, function (i, value) {
-                    this.setIcon(defaultIcon);
-                    if (place === value.F.title) {
-                        value.setAnimation('AMAP_ANIMATION_DROP');
-                        value.setIcon(highlightedIcon);
-                    }
-                });
-            })
-        })
-    });
-
+    /*
     function infoWindowContent(title, address, tel, type, position) {
         let content = [];
         ajax(title, function (data) {
@@ -150,8 +200,12 @@ module.exports = function () {
 
     function closeInfoWindow() {
         map.clearInfoWindow();
-    }
+    }*/
     //map.setFitView();
 };
 
+module.exports.Map = map;
 module.exports.Markers = markers;
+module.exports.DefaultIcon = defaultIcon;
+module.exports.HighlightedIcon = highlightedIcon;
+module.exports.InfoWinCon = infoWindowContent;
