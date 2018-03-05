@@ -22,192 +22,120 @@
             height: 100%;
             position: relative;
         }
-        @media screen and (min-width: 480px){
-            #options-box{
-                display: block;
-                position: absolute;
-                left: 0;
-                top: 0;
-                background: #fff;
-                border: 1px solid #999;
-                height: 94%;
-                line-height: 35px;
-                padding: 10px 10px 30px 10px;
-                text-align: left;
-                width: 280px;
-            }
-            #options-box p{
-                margin: 10px 0 0 0;
-                font-size: 20px;
-                font-weight: bolder;
-            }
-            input{
-                width: 83%;
-                height: 3%;
-            }
-            #map{
-                height: 100%;
-                margin-left: 302px;
-            }
-            #map-head{
-                height: 50px;
-                background-color: #333333;
-                z-index: 100;
-                margin: 0;
-            }
-            #map-head p{
-                margin: 0;
-            }
-            #container{
-                margin-top: 50px;
-                margin-left: 302px;
-                height: 93%;
-            }
-            .navbar-toggle.collapsed{
-                background-color: #333333;
-                color: #121d28;
-                border-color: #3f88d4;
-                outline: none;
-                margin-left: 15px;
-                margin-top: 10px;
-            }
-            .navbar-toggle{
-                height: 30px;
-                padding: 9px 1px;
-                width: 30px;
-                border-radius: 50%;
-                position: relative;
-                float: left;
-                margin: 5px 15px 10px 0;
-                border: 1px solid transparent;
-            }
-            button{
-                display: none;
-                -webkit-appearance: button;
-                cursor: pointer;
-                text-transform: none;
-                align-items: flex-start;
-                text-align: center;
-                font: 400 13.3333px Arial;
-            }
-            .sr-only{
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                margin: -1px;
-                padding: 0;
-                overflow: hidden;
-                clip: rect(0,0,0,0);
-                border: 0;
-            }
-            .icon-bar{
-                background-color: #3f88d4;
-                height: 2px;
-                width: 16px;
-                display: block;
-                border-radius: 1px;
-            }
-            .navbar-toggle .icon-bar+.icon-bar{
-                margin-top: 2px;
-            }
-            ul{
-                margin-top: 20px;
-            }
-            li{
-                list-style: none;
-            }
+        #options-box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fff;
+            border: 1px solid #999;
+            height: 94%;
+            line-height: 35px;
+            padding: 10px 10px 30px 10px;
+            text-align: left;
+            z-index: 200;
+            width: 280px;
+            overflow-x: hidden;
         }
-        @media screen and (max-width: 479px){
+        #options-box p{
+            margin: 10px 0 0 0;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        input{
+            width: 83%;
+            height: 3%;
+        }
+        #map-head{
+            height: 50px;
+            background-color: #333333;
+            z-index: 100;
+            margin: 0;
+        }
+        #map-head p{
+             margin: 0;
+         }
+        .navbar-toggle.collapsed{
+              background-color: #333333;
+              color: #121d28;
+              border-color: #3f88d4;
+              outline: none;
+              margin-left: 15px;
+              margin-top: 10px;
+        }
+        .navbar-toggle{
+            height: 30px;
+            padding: 9px 1px;
+            width: 30px;
+            border-radius: 50%;
+            position: relative;
+            float: left;
+            margin: 5px 15px 10px 0;
+            border: 1px solid transparent;
+        }
+        button{
+             -webkit-appearance: button;
+             cursor: pointer;
+             text-transform: none;
+             align-items: flex-start;
+             text-align: center;
+             font: 400 13.3333px Arial;
+         }
+        .sr-only{
+              position: absolute;
+              width: 1px;
+              height: 1px;
+              margin: -1px;
+              padding: 0;
+              overflow: hidden;
+              clip: rect(0,0,0,0);
+              border: 0;
+        }
+        .icon-bar{
+               background-color: #3f88d4;
+               height: 2px;
+               width: 16px;
+               display: block;
+               border-radius: 1px;
+        }
+        .navbar-toggle .icon-bar+.icon-bar{
+             margin-top: 2px;
+         }
+        ul{
+            margin-top: 20px;
+        }
+        li{
+            list-style: none;
+        }
+        #map{
+            height: 100%;
+            transition: margin-left .5s;
+        }
+        #container{
+            margin-top: 50px;
+            height: 93%;
+            transition: margin-left .5s;
+        }
+        .closebtn{
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 280px;
+            color: #333333;
+        }
+        a{
+            text-decoration: none;
+        }
+        @media screen and (max-width: 575px){
             #options-box{
-                display: none;
-                position: absolute;
-                left: 0;
-                top: 0;
-                background: #fff;
-                border: 1px solid #999;
-                height: 94%;
-                line-height: 35px;
-                padding: 10px 10px 30px 10px;
-                text-align: left;
-                width: 280px;
-            }
-            #options-box p{
-                margin: 10px 0 0 0;
-                font-size: 20px;
-                font-weight: bolder;
-            }
-            input{
-                width: 83%;
-                height: 3%;
+                /*display: none;*/
+                margin-left: -302px;
             }
             #map{
-                height: 100%;
-            }
-            #map-head{
-                height: 50px;
-                background-color: #333333;
-                z-index: 100;
-                margin: 0;
-            }
-            #map-head p{
-                margin: 0;
+                margin-left: 0;
             }
             #container{
-                margin-top: 50px;
-                height: 93%;
-            }
-
-            .navbar-toggle.collapsed{
-                background-color: #333333;
-                color: #121d28;
-                border-color: #3f88d4;
-                outline: none;
-                margin-left: 15px;
-                margin-top: 10px;
-            }
-            .navbar-toggle{
-                height: 30px;
-                padding: 9px 1px;
-                width: 30px;
-                border-radius: 50%;
-                position: relative;
-                float: left;
-                margin: 5px 15px 10px 0;
-                border: 1px solid transparent;
-            }
-            button{
-                -webkit-appearance: button;
-                cursor: pointer;
-                text-transform: none;
-                align-items: flex-start;
-                text-align: center;
-                font: 400 13.3333px Arial;
-            }
-            .sr-only{
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                margin: -1px;
-                padding: 0;
-                overflow: hidden;
-                clip: rect(0,0,0,0);
-                border: 0;
-            }
-            .icon-bar{
-                background-color: #3f88d4;
-                height: 2px;
-                width: 16px;
-                display: block;
-                border-radius: 1px;
-            }
-            .navbar-toggle .icon-bar+.icon-bar{
-                margin-top: 2px;
-            }
-            ul{
-                margin-top: 20px;
-            }
-            li{
-                list-style: none;
+                margin-left: 0;
             }
         }
 
@@ -239,7 +167,6 @@
         }
         div.info-middle{
             font-size: 12px;
-            /*padding: 6px;*/
             line-height: 20px;
             text-align: center;
         }
@@ -259,30 +186,27 @@
         }
         .info-middle img{
             float: left;
-            margin-right: 0;/*6px*/
+            margin-right: 0;
         }
     </style>
 </head>
 <body>
 <div id="map-demo">
     <div id="options-box">
-        <p>吃喝在武汉</p>
+        <h2>吃喝在武汉</h2>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <br />
         <label for="search">Filter</label>
         <input id="search" type="text"
                data-bind="textInput: userSearch"
                placeholder="Please input the location you interest in">
-            <!-- data-bind="value: userSearch"/data-bind="textInput: userSearch"/data-bind="value: inputFilter(), valueUpdate: 'afterkeydown'-->
-            <!--<button id="search-button" data-bind="click: liDisplay">Go</button>-->
-        <!--<p>Key Locations</p>-->
         <ul id="fault-place" data-bind="foreach: inputFilter(), valueUpdate: 'afterkeydown'">
-            <li data-bind="text: title"></li><!--, visible: display, click: $root.goToId, css: {selected: $data === $root.chosenId}-->
+            <li data-bind="text: title, click: $parent.show"></li>
         </ul>
-            <!--data-bind="foreach: locationList"-->
     </div>
     <div id="map">
         <div id="map-head">
-            <button class="navbar-toggle collapsed" onclick="toggleBar()">
+            <button class="navbar-toggle collapsed" onclick="openNav()">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -292,37 +216,25 @@
         <div id="container"></div>
     </div>
 </div>
+
 <script>
-    function toggleBar() {
-        if(window.screen.width < 480){
-            let test = document.getElementById('options-box');
-            let demo = window.getComputedStyle(test, null);
-            if(demo.display==='none'){
-                test.style.cssText = "display: block"
-            }else {
-                test.style.cssText = "display: none"
-            }
-            let mapLeft = document.getElementById('map');
-            let currentMapLeft = window.getComputedStyle(mapLeft, null);
-            let mapLeftCon = document.getElementById('container');
-            let currentMapLeftCon = window.getComputedStyle(mapLeftCon, null);
+    function closeNav() {
+        document.getElementById('options-box').style.marginLeft = '-302px';
+        document.getElementById('map').style.marginLeft = '0';
+        document.getElementById('container').style.marginLeft = '0';
+    }
 
-            if (currentMapLeft.marginLeft === '302px' &&
-                currentMapLeftCon.marginLeft === '302px'){
-                mapLeft.style.cssText = "margin-left: 0px";
-                mapLeftCon.style.cssText = "margin-left: 0px";
-
-            } else if (currentMapLeft.marginLeft === '0px' &&
-                currentMapLeftCon.marginLeft === '0px'){
-                mapLeft.style.cssText = "margin-left: 302px";
-                mapLeftCon.style.cssText = "margin-left: 302px";
-            }
-        }else {
-            let test = document.getElementById('options-box');
-            test.style.cssText = "display: block"
-        }
+    function openNav() {
+        document.getElementById('options-box').style.marginLeft = '0';
+        document.getElementById('map').style.marginLeft = '302px';
+        document.getElementById('container').style.marginLeft = '302px';
     }
 </script>
-<script src="http://webapi.amap.com/maps?v=1.4.3&key=bdcccadfee676c3e64be41f9d7963c4c"></script>
-<script type="text/javascript" src="bundle.js"></script></body>
+<script>
+    let mapError = function () {
+        //未能加载
+        alert('地图未能加载');
+    }
+</script>
+<script src="http://webapi.amap.com/maps?v=1.4.3&key=bdcccadfee676c3e64be41f9d7963c4c" onerror="mapError()"></script><script type="text/javascript" src="bundle.js"></script></body>
 </html>

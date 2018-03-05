@@ -12,7 +12,6 @@ module.exports = function () {
     };
 
     function ViewModel() {
-        let map = Map.Map;
         let markers = Map.Markers;
         let defaultIcon = Map.DefaultIcon;
         let highlightedIcon = Map.HighlightedIcon;
@@ -58,6 +57,16 @@ module.exports = function () {
                 }
             });
         };
+        self.openNav = function () {
+            document.getElementById('options-box').style.marginLeft = '0';
+            document.getElementById('map').style.marginLeft = '302px';
+            document.getElementById('container').style.marginLeft = '302px';
+        };
+        self.closeNav = function () {
+            document.getElementById('options-box').style.marginLeft = '-302px';
+            document.getElementById('map').style.marginLeft = '0';
+            document.getElementById('container').style.marginLeft = '0';
+        }
     }
 
     let model = new ViewModel();

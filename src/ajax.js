@@ -10,6 +10,7 @@ module.exports = function getPhotosFromFlickr (place, callback1, callback2) {
         format: 'json'
     });
     const endpoint = `${url}?${params}`;
+
     axios.get(endpoint).then(data => {
         callback1(jsonp(data));
     }).catch(function(){

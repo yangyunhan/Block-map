@@ -15,7 +15,8 @@ module.exports = {
     devServer: {
         contentBase: "./dist",
         historyApiFallback: true, //不跳转
-        inline: true//实时刷新
+        inline: true,//实时刷新
+		hot: true
     },
     module: {
         rules: [

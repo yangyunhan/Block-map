@@ -7,190 +7,119 @@ html,body{
     height: 100%;
     position: relative;
 }
-@media screen and (min-width: 480px){
-    #options-box{
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: #fff;
-        border: 1px solid #999;
-        height: 94%;
-        line-height: 35px;
-        padding: 10px 10px 30px 10px;
-        text-align: left;
-        width: 280px;
-    }
-    #options-box p{
-        margin: 10px 0 0 0;
-        font-size: 20px;
-        font-weight: bolder;
-    }
-    input{
-        width: 83%;
-        height: 3%;
-    }
-    #map{
-        height: 100%;
-        margin-left: 302px;
-    }
-    #map-head{
-        height: 50px;
-        background-color: #333333;
-        z-index: 100;
-        margin: 0;
-    }
-    #map-head p{
-        margin: 0;
-    }
-    #container{
-        margin-top: 50px;
-        margin-left: 302px;
-        height: 93%;
-    }
-    .navbar-toggle.collapsed{
-        background-color: #333333;
-        color: #121d28;
-        border-color: #3f88d4;
-        outline: none;
-        margin-left: 15px;
-        margin-top: 10px;
-    }
-    .navbar-toggle{
-        height: 30px;
-        padding: 9px 1px;
-        width: 30px;
-        border-radius: 50%;
-        position: relative;
-        float: left;
-        margin: 5px 15px 10px 0;
-        border: 1px solid transparent;
-    }
-    button{
-        -webkit-appearance: button;
-        cursor: pointer;
-        text-transform: none;
-        align-items: flex-start;
-        text-align: center;
-        font: 400 13.3333px Arial;
-    }
-    .sr-only{
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        border: 0;
-    }
-    .icon-bar{
-        background-color: #3f88d4;
-        height: 2px;
-        width: 16px;
-        display: block;
-        border-radius: 1px;
-    }
-    .navbar-toggle .icon-bar+.icon-bar{
-        margin-top: 2px;
-    }
-    ul{
-        margin-top: 20px;
-    }
-    li{
-        list-style: none;
-    }
+#options-box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #fff;
+    border: 1px solid #999;
+    height: 94%;
+    line-height: 35px;
+    padding: 10px 10px 30px 10px;
+    text-align: left;
+    z-index: 200;
+    width: 280px;
+    overflow-x: hidden;
 }
-@media screen and (max-width: 479px){
+#options-box p{
+    margin: 10px 0 0 0;
+    font-size: 20px;
+    font-weight: bolder;
+}
+input{
+    width: 83%;
+    height: 3%;
+}
+#map-head{
+    height: 50px;
+    background-color: #333333;
+    z-index: 100;
+    margin: 0;
+}
+#map-head p{
+    margin: 0;
+}
+.navbar-toggle.collapsed{
+    background-color: #333333;
+    color: #121d28;
+    border-color: #3f88d4;
+    outline: none;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+.navbar-toggle{
+    height: 30px;
+    padding: 9px 1px;
+    width: 30px;
+    border-radius: 50%;
+    position: relative;
+    float: left;
+    margin: 5px 15px 10px 0;
+    border: 1px solid transparent;
+}
+button{
+    -webkit-appearance: button;
+    cursor: pointer;
+    text-transform: none;
+    align-items: flex-start;
+    text-align: center;
+    font: 400 13.3333px Arial;
+}
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.icon-bar{
+    background-color: #3f88d4;
+    height: 2px;
+    width: 16px;
+    display: block;
+    border-radius: 1px;
+}
+.navbar-toggle .icon-bar+.icon-bar{
+    margin-top: 2px;
+}
+ul{
+    margin-top: 20px;
+}
+li{
+    list-style: none;
+}
+#map{
+    height: 100%;
+    transition: margin-left .5s;
+}
+#container{
+    margin-top: 50px;
+    height: 93%;
+    transition: margin-left .5s;
+}
+.closebtn{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 280px;
+    color: #333333;
+}
+a{
+    text-decoration: none;
+}
+@media screen and (max-width: 575px){
     #options-box{
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: #fff;
-        border: 1px solid #999;
-        height: 94%;
-        line-height: 35px;
-        padding: 10px 10px 30px 10px;
-        text-align: left;
-        width: 280px;
-    }
-    #options-box p{
-        margin: 10px 0 0 0;
-        font-size: 20px;
-        font-weight: bolder;
-    }
-    input{
-        width: 83%;
-        height: 3%;
+        margin-left: -302px;
     }
     #map{
-        height: 100%;
-        margin-left: 302px;
-    }
-    #map-head{
-        height: 50px;
-        background-color: #333333;
-        z-index: 100;
-        margin: 0;
-    }
-    #map-head p{
-        margin: 0;
+        margin-left: 0;
     }
     #container{
-        margin-top: 50px;
-        margin-left: 302px;
-        height: 93%;
-    }
-    .navbar-toggle.collapsed{
-        background-color: #333333;
-        color: #121d28;
-        border-color: #3f88d4;
-        outline: none;
-        margin-left: 15px;
-        margin-top: 10px;
-    }
-    .navbar-toggle{
-        height: 30px;
-        padding: 9px 1px;
-        width: 30px;
-        border-radius: 50%;
-        position: relative;
-        float: left;
-        margin: 5px 15px 10px 0;
-        border: 1px solid transparent;
-    }
-    button{
-        -webkit-appearance: button;
-        cursor: pointer;
-        text-transform: none;
-        align-items: flex-start;
-        text-align: center;
-        font: 400 13.3333px Arial;
-    }
-    .sr-only{
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        border: 0;
-    }
-    .icon-bar{
-        background-color: #3f88d4;
-        height: 2px;
-        width: 16px;
-        display: block;
-        border-radius: 1px;
-    }
-    .navbar-toggle .icon-bar+.icon-bar{
-        margin-top: 2px;
-    }
-    ul{
-        margin-top: 20px;
-    }
-    li{
-        list-style: none;
+        margin-left: 0;
     }
 }
 
@@ -222,7 +151,6 @@ div.info-top img:hover{
 }
 div.info-middle{
     font-size: 12px;
-    /*padding: 6px;*/
     line-height: 20px;
     text-align: center;
 }
@@ -242,5 +170,5 @@ span{
 }
 .info-middle img{
     float: left;
-    margin-right: 0;/*6px*/
+    margin-right: 0;
 }
