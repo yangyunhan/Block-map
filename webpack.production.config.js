@@ -12,22 +12,47 @@ module.exports = {
     },
     devtool: "null",
     module: {
-        rules: [{
-            test: /(\.jsx|\.js)$/,
-            use: {
-                loader: "babel-loader"
+        rules: [
+            {
+                test: /(\.jsx|\.js)$/,
+                use: {
+                    loader: "babel-loader"
+                },
+                exclude: /node_modules/
             },
-            exclude: /node_modules/
-        },{
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                use: [{
-                    loader: "css-loader",
-                    
-                }]
-            })
-        }]
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [{
+                        loader: "css-loader",
+                    }]
+                })
+            },
+            {
+                test: /\.(jpg|jpeg|png|gif|ico|svg)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            localIdentName: '[name].[hash].[ext]'
+                        }
+                    }
+                ],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            localIdentName: '[name].[hash:7].[ext]'
+                        }
+                    }
+                ]
+            },
+            ]
     },
     plugins: [
         new webpack.BannerPlugin('版权所有，翻版必究'),
@@ -42,6 +67,11 @@ module.exports = {
             root: __dirname,
             verbose: true,
             dry: false
+        }),
+		new webpack.ProvidePlugin({
+            ko: 'knockout',
+            $: 'jquery',
+            axios: 'axios'
         })
     ]
 };

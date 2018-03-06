@@ -1,5 +1,5 @@
 //ajax.js
-//module.exports = function(place, callback){}
+
 module.exports = function getPhotosFromFlickr (place, callback1, callback2) {
     const url = 'https://api.flickr.com/services/rest/';
     const key = '264125a5cd570b52b80d6e6f6983b4a8';

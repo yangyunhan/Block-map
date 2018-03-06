@@ -5,10 +5,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     devtool: 'eval-source-map',
     entry: __dirname + "/src/main.js", //已多次提及的唯一入口文件
-    /*
-    *   main: __dirname + "/app/main.js",
-        knockout: __dirname + "/app/knockout-3.2.0.js"
-    * */
     output: {
         path: __dirname + "/dist", //打包后的文件存放的地方
         filename: "bundle.js"//打包后输出文件的文件名
@@ -72,6 +68,6 @@ module.exports = {
             $: 'jquery',
             axios: 'axios'
         }),
-		new ExtractTextPlugin("styles.css")
+		new ExtractTextPlugin("style.css")
     ]
 };
