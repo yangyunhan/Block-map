@@ -12,7 +12,14 @@ let map = new AMap.Map('container', {
 let defaultIcon = 'http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png';
 let highlightedIcon = 'http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png';
 
-
+/**
+ * descriptiong: request data and create information window
+ * @param title
+ * @param address
+ * @param tel
+ * @param type
+ * @param position
+ */
 function infoWindowContent(title, address, tel, type, position) {
     let content = [];
     ajax(title, function (data) {
@@ -24,6 +31,15 @@ function infoWindowContent(title, address, tel, type, position) {
     });
 }
 
+/**
+ * description: create the context in the information window
+ * @param content
+ * @param title
+ * @param address
+ * @param tel
+ * @param type
+ * @param position
+ */
 function contentCreate(content, title, address, tel, type, position) {
     content.push("地址" + address);
     content.push("电话：" + tel);
@@ -36,6 +52,12 @@ function contentCreate(content, title, address, tel, type, position) {
     infoWindow.open(map, position);
 }
 
+/**
+ * description: define the style of information window
+ * @param title
+ * @param content
+ * @returns {HTMLDivElement}
+ */
 function createInfoWindow(title, content) {
     let info = document.createElement("div");
 
@@ -74,6 +96,9 @@ function createInfoWindow(title, content) {
     return info;
 }
 
+/**
+ * description: close the information window
+ */
 function closeInfoWindow() {
     map.clearInfoWindow();
 }

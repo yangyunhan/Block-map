@@ -1,6 +1,7 @@
 //Greeter.js
 let data = require('./data.js');
 let Map = require('./map.js');
+
 module.exports = function () {
     const initialLocation = data;
     let Location = function (data) {
@@ -11,6 +12,10 @@ module.exports = function () {
         this.type = data.type;
     };
 
+    /**
+     * description: VM in the knockout
+     * @constructor
+     */
     function ViewModel() {
         let markers = Map.Markers;
         let defaultIcon = Map.DefaultIcon;
@@ -22,6 +27,10 @@ module.exports = function () {
         initialLocation.forEach(function (locationItem) {
             self.locationList.push(new Location(locationItem));
         });
+
+        /**
+         * description: filter the user's input
+         */
         self.inputFilter = ko.computed(function () {
             let filter = self.userSearch();
             if(!filter){
@@ -42,6 +51,10 @@ module.exports = function () {
                 })
             }
         });
+
+        /**
+         * description: display function of the markers
+         */
         self.show = function () {
             let title = this.title;
             let address = this.address;
@@ -57,11 +70,19 @@ module.exports = function () {
                 }
             });
         };
+
+        /**
+         * description: open function of the navigator in the left
+         */
         self.openNav = function () {
             document.getElementById('options-box').style.marginLeft = '0';
             document.getElementById('map').style.marginLeft = '302px';
             document.getElementById('container').style.marginLeft = '302px';
         };
+
+        /**
+         * description: close function of the navigator in the left
+         */
         self.closeNav = function () {
             document.getElementById('options-box').style.marginLeft = '-302px';
             document.getElementById('map').style.marginLeft = '0';
