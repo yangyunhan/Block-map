@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -27,20 +28,7 @@ module.exports = {
                 },
                 exclude: /node_modules/
             },
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    },{
-                        loader: "css-loader",
-                        options: {
-                            modules: true, //指定启用css modules
-                            localIdentName: '[name]__[local]--[hash:base64:5]' //指定css的类名格式
-                        }
-                    }
-                    ]
-            },
+            
             {
                 test: /\.(jpg|jpeg|png|gif|ico|svg)$/,
                 use: [
@@ -63,7 +51,14 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+			{
+				test: /\.css$/,
+				use: ExtractTextPlugin.extract({
+					fallback: "style-loader",
+					use: "css-loader"
+				})
+			}
         ]
     },
     plugins: [
@@ -76,6 +71,7 @@ module.exports = {
             ko: 'knockout',
             $: 'jquery',
             axios: 'axios'
-        })
+        }),
+		new ExtractTextPlugin("styles.css")
     ]
 };
